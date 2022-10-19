@@ -1,0 +1,50 @@
+From: Praveen Arimbrathodiyil <praveen@debian.org>
+Date: Sat, 18 May 2013 00:07:24 +0530
+Subject: Executables and tests should take libraries from standard path
+
+---
+ bin/shindo            | 8 ++------
+ bin/shindont          | 8 ++------
+ tests/tests_helper.rb | 2 +-
+ 3 files changed, 5 insertions(+), 13 deletions(-)
+
+diff --git a/bin/shindo b/bin/shindo
+index e92177d..621409d 100755
+--- a/bin/shindo
++++ b/bin/shindo
+@@ -1,8 +1,4 @@
+ #!/usr/bin/env ruby
+ @thread_locals = { :interactive => true }
+-require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'shindo', 'verbose'))
+-if Kernel.respond_to?(:require_relative)
+-  require_relative File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'shindo', 'bin'))
+-else
+-  require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'shindo', 'bin'))
+-end
++require 'shindo/verbose'
++require 'shindo/bin'
+diff --git a/bin/shindont b/bin/shindont
+index 4fbf738..188ab91 100755
+--- a/bin/shindont
++++ b/bin/shindont
+@@ -1,8 +1,4 @@
+ #!/usr/bin/env ruby
+ @thread_locals = { :interactive => false }
+-require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'shindo', 'taciturn'))
+-if Kernel.respond_to?(:require_relative)
+-  require_relative File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'shindo', 'bin'))
+-else
+-  require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'shindo', 'bin'))
+-end
++require 'shindo/taciturn'
++require 'shindo/bin'
+diff --git a/tests/tests_helper.rb b/tests/tests_helper.rb
+index d358559..f5746e8 100644
+--- a/tests/tests_helper.rb
++++ b/tests/tests_helper.rb
+@@ -1,4 +1,4 @@
+-require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'shindo'))
++require 'shindo'
+ require 'open3'
+ 
+ BIN = File.join(File.dirname(__FILE__), '..', 'bin', 'shindo')

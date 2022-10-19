@@ -1,0 +1,28 @@
+Source: ruby-shindo
+Section: ruby
+Priority: optional
+Maintainer: Debian Ruby Team <pkg-ruby-extras-maintainers@lists.alioth.debian.org>
+Uploaders: Pirate Praveen <praveen@debian.org>
+Build-Depends: debhelper-compat (= 13),
+               gem2deb,
+               ruby-formatador
+Standards-Version: 4.5.1
+Vcs-Git: https://salsa.debian.org/ruby-team/ruby-shindo.git
+Vcs-Browser: https://salsa.debian.org/ruby-team/ruby-shindo
+Homepage: https://github.com/geemus/shindo
+Testsuite: autopkgtest-pkg-ruby
+XS-Ruby-Versions: all
+Rules-Requires-Root: no
+
+Package: ruby-shindo
+Architecture: all
+XB-Ruby-Versions: ${ruby:Versions}
+Depends: ruby,
+         ${misc:Depends},
+         ${ruby:Depends},
+         ${shlibs:Depends}
+Description: simple depth first Ruby testing
+ Work with your tests, not against them.
+ .
+ This package provides shindo and shindont command line tools.
+ shindo is interactive and shindont is non-interactive.

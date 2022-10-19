@@ -1,0 +1,31 @@
+#!/usr/bin/make -f
+#export DH_VERBOSE=1
+#
+# Uncomment to ignore all test failures (but the tests will run anyway)
+#export DH_RUBY_IGNORE_TESTS=all
+#
+# Uncomment to ignore some test failures (but the tests will run anyway).
+# Valid values:
+#export DH_RUBY_IGNORE_TESTS=ruby1.8 ruby1.9.1 require-rubygems
+#
+# If you need to specify the .gemspec (eg there is more than one)
+#export DH_RUBY_GEMSPEC=gem.gemspec
+
+export DH_RUBY = --gem-install
+
+COMMAND_LIST  = shindo shindont
+
+%:
+	dh $@ --buildsystem=ruby --with ruby
+
+override_dh_auto_build:
+	dh_auto_build
+	@for COMMAND in $(COMMAND_LIST); do \
+    pod2man --section=1 --release=\"Ruby-Graphviz\" \
+            --center=\"Debian\ GNU\ System\" \
+            debian/$$COMMAND.1.pod > debian/$$COMMAND.1;\
+	done
+
+override_dh_clean:
+	dh_clean
+	@$(foreach COMMAND,$(COMMAND_LIST), rm -f debian/$(COMMAND).1)

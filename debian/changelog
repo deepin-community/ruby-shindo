@@ -1,0 +1,78 @@
+ruby-shindo (0.3.10-1) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Remove overrides for lintian tags that are no longer supported.
+  * Update standards version to 4.5.1, no changes needed.
+  * Bump debhelper from old 12 to 13.
+
+  [ Antonio Terceiro ]
+  * add patch: Shindo::Rake: run with current Ruby interpreter
+  * New upstream version 0.3.10
+  * Refresh patches
+
+ -- Antonio Terceiro <terceiro@debian.org>  Tue, 02 Nov 2021 10:09:50 -0300
+
+ruby-shindo (0.3.8-3) unstable; urgency=medium
+
+  * Team upload.
+  * d/control: Add Rules-Requires-Root field.
+    (Build-Depends): Remove superfluous debhelper dependency.
+    (Standards-Version): Bump to 4.5.0.
+    (Depends): Remove ruby-interpreter and use ${ruby:Depends}.
+  * d/copyright: Add Upstream-Contact field.
+    (Copyright): Add the team.
+  * d/rules: Use gem installation layout via DH_RUBY.
+  * d/patches/fix-paths.patch: Rename to d/patches/0001-fix-paths.patch.
+  * d/patches/0001-fix-paths.patch: Improve patch.
+    - Patch tests/tests_helper.rb to not require libraries from lib/.
+  * d/patches/series: Adjust.
+  * d/upstream/metadata: Add upstream metadata.
+
+ -- Daniel Leidert <dleidert@debian.org>  Sun, 12 Apr 2020 01:35:34 +0200
+
+ruby-shindo (0.3.8-2) unstable; urgency=medium
+
+  * Team upload
+
+  [ Cédric Boutillier ]
+  * Bump debhelper compatibility level to 9
+  * Remove version in the gem2deb build-dependency
+  * Use https:// in Vcs-* fields
+  * Use https:// in Vcs-* fields
+  * Bump Standards-Version to 3.9.7 (no changes needed)
+  * Run wrap-and-sort on packaging files
+
+  [ Hideki Yamane ]
+  * debian/patches
+    - add 0002-fix-FTBFS-with-Ruby-2.5-Closes-893821.patch (Closes: #893821)
+  * debian/control
+    - update Vcs-* to use salsa.debian.org
+    - update Homepage: field to use https
+    - set Standards-Version: 4.3.0
+    - use dh12
+    - add "Testsuite: autopkgtest-pkg-ruby"
+  * debian/copyright
+    - use https
+  * debian/watch
+    - update URL and version 4
+  * debian/gitlab-ci.yml
+    - add it
+  * debian/rules
+    - use override to avoid FTBFS on build-indep
+
+ -- Hideki Yamane <henrich@debian.org>  Sat, 29 Dec 2018 00:36:46 +0900
+
+ruby-shindo (0.3.8-1) unstable; urgency=low
+
+  * New upstream release
+  * Bump standards version to 3.9.5 (no changes)
+  * Bump gem2deb build dep to 0.7.5 (ruby 2.x)
+  * Refresh patches
+
+ -- Pirate Praveen <praveen@debian.org>  Sat, 19 Apr 2014 17:11:18 +0530
+
+ruby-shindo (0.3.5-1) unstable; urgency=low
+
+  * Initial release (Closes: #708680)
+
+ -- Praveen Arimbrathodiyil <praveen@debian.org>  Fri, 17 May 2013 20:14:07 +0530

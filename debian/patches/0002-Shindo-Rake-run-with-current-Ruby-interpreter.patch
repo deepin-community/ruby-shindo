@@ -1,0 +1,25 @@
+From: Antonio Terceiro <asa@terceiro.xyz>
+Date: Tue, 2 Nov 2021 10:02:12 -0300
+Subject: Shindo::Rake: run with current Ruby interpreter
+
+It's possible to have multiple Ruby interpreters installed. For example
+on Debian at the moment ww have ruby2.7 and ruby3.0, while we transition
+from one to the other. We always want to run tests under the same Ruby
+that is running rake itself.
+---
+ lib/shindo/rake.rb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/shindo/rake.rb b/lib/shindo/rake.rb
+index d2258b8..1630066 100644
+--- a/lib/shindo/rake.rb
++++ b/lib/shindo/rake.rb
+@@ -7,7 +7,7 @@ module Shindo
+     def initialize
+       desc "Run shindo tests"
+       task :tests do
+-        system 'shindo'
++        ruby '-S', 'shindo'
+         fail if $? != 0
+       end
+     end

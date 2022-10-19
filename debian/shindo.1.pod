@@ -1,0 +1,40 @@
+=head1 NAME
+
+shindo - simple depth first ruby testing
+
+=head1 SYNOPSIS
+
+shindo [<something_tests.rb>] 
+
+shindo [<some_test_directory>]
+
+shindo [<some_test_directory>] [+<tag>] [-<tag>]
+
+
+=head1 DESCRIPTION
+
+B<shindo> runs tests, optionally with tags support.
+When tests fail you'll get lots of options to help you debug the problem, just
+enter '?' at the prompt to see your options.
+
+See /usr/share/doc/ruby-shindo/ for more details.
+
+=head1 OPTIONS
+
++<tag>	run just tests with the given tag   
+-<tag>	run just tests without the given tag
+
+=head1 EXAMPLE
+
+$ shindo <some_test_directory> +<foo>
+
+$ shindo <some_test_directory> -<bar>
+
+$ shindo <some_test_directory> +<foo> -<bar>
+
+=head1 AUTHOR
+
+Copyright 2009 geemus (Wesley Beary) - http://github.com/geemus
+
+This manual page is written by Praveen Arimbrathodiyl <praveen@debian.org> for
+Debian GNU System (GNU/Linux, GNU/kFreeBSD, GNU/Hurd).
